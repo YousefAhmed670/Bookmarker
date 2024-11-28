@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Bookmarker</title>
+</head>
+
+<body>
+    <div class="container py-4 d-flex flex-column justify-content-center">
+        <h1 class="my-4 py-3">Bookmarker</h1>
+        <div class="py-4 my-4 bookmark-box">
+            <h2 class="text-center fs-3 my-2"><i class="fa-solid fa-bookmark"></i> Bookmark your favorite sites <i
+                    class="fa-solid fa-bookmark"></i>
+            </h2>
+            <div class="mb-3">
+                <label for="SiteName" class="form-label fw-bold"><i class="fa-solid fa-book p-1"></i> Site Name
+                </label>
+                <input type="text" class="form-control border border-secondary-subtle" id="SiteName"
+                    placeholder="Bookmark Name" onblur="validate(/^\w{3,30}$/,this,this.value,SiteNamealert)">
+                <div class="alert alert-danger d-flex align-items-center d-none" role="alert" id="SiteNamealert">
+                    <div>
+                        " (Site Name) should be between 3-30 characters"
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="SiteURL" class="form-label fw-bold"><i class="fa-solid fa-link p-1"></i> Site URL
+                </label>
+                <input type="text" class="form-control border border-secondary-subtle" id="SiteURL"
+                    placeholder="Website URL"
+                    onblur="validate(/^(https?:\/\/)?(www\.)?([\da-z.-]+)\.([a-z.]{2,6})([\/\w .-]*)*\/?$/,this,this.value,SiteURLalert)">
+                <div class="alert alert-danger d-flex align-items-center d-none" role="alert" id="SiteURLalert">
+                    <div>
+                        "(Site URL) should start with "https://" then www...... "
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-danger py-2 px-5 my-2" onclick="addData()">submit</button>
+        </div>
+        <table class="table text-center py-1 my-2">
+            <thead>
+                <tr>
+                    <th scope="col">index</th>
+                    <th scope="col">Website Name</th>
+                    <th scope="col">Visit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="Bookmarks">
+                <!-- <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td><a href="https://www.google.com" target="_blank"><button class="btn btn-success"><i
+                                    class="fa-solid fa-eye p-1"></i> Visit</button></a></td>
+                    <td><button class="btn btn-danger" ><i class="fa-solid fa-trash-can p-1"></i> Delete</button></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
